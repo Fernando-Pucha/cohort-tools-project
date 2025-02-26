@@ -6,7 +6,7 @@ const Schema = _Schema;
 // CREATE SCHEMA
 // Schema - describes and enforces the structure of the documents
 const cohortsSchema = new Schema({
-    _id: Number,
+    /* _id: Number, */
     inProgress: Boolean,
     cohortSlug: String,
     cohortName: String,
@@ -17,11 +17,10 @@ const cohortsSchema = new Schema({
     programManager: String,
     leadTeacher: String,
     totalHours: Number
-
-});
+}, {versionKey: false});
 
 // CREATE MODEL
-const Cohorts = model("Cohorts", cohortsSchema);
+const Cohorts = model("Cohort", cohortsSchema);
 
 // EXPORT THE MODEL
 export default Cohorts;
