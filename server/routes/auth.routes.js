@@ -10,7 +10,7 @@ const router = express.Router();
 const saltRounds = 10;
 
 // POST  /auth/signup
-router.post("/api/auth/signup", (req, res, next) => {
+router.post("/auth/signup", (req, res, next) => {
   const { email, password, name } = req.body;
 
   // Check if the email or password or name is provided as an empty string
@@ -75,7 +75,7 @@ router.post("/api/auth/signup", (req, res, next) => {
 // POST  /auth/login
 // ...
 
-router.post("/api/auth/login", (req, res, next) => {
+router.post("/auth/login", (req, res, next) => {
   const { email, password } = req.body;
 
   // Check if email or password are provided as empty string
@@ -119,7 +119,7 @@ router.post("/api/auth/login", (req, res, next) => {
 });
 
 // GET  /auth/verify
-router.get("/api/auth/verify", isAuthenticated, (req, res, next) => {
+router.get("/auth/verify", isAuthenticated, (req, res, next) => {
   // <== CREATE NEW ROUTE
 
   // If JWT token is valid the payload gets decoded by the
