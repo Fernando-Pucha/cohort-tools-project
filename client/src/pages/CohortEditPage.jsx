@@ -50,12 +50,14 @@ function CohortEditPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const storedToken = localStorage.getItem('authToken');
+    
     const requestBody = {
       ...cohort,
     };
 
     axios
-      .put(`${API_URL}/api/cohorts/${cohortId}`, requestBody)
+      .put(`${API_URL}/api/cohorts/${cohortId}`, requestBody,{ headers: { Authorization: `Bearer ${storedToken}`} })
       .then(() => navigate(`/cohorts/details/${cohortId}`))
       .catch((error) => console.log(error));
   };

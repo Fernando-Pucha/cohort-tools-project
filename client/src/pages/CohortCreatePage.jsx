@@ -31,6 +31,8 @@ function CohortCreatePage() {
     const cohortSlug = createCohortSlug({ ...cohort, [name]: value });
     const cohortName = convertSlugToName(cohortSlug);
 
+    
+
     setCohort((prevCohort) => ({
       ...prevCohort,
       cohortSlug,
@@ -41,13 +43,15 @@ function CohortCreatePage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const storedToken = localStorage.getItem('authToken');
 
     const requestBody = {
       ...cohort,
     };
-
+    
     axios
-      .post(`${API_URL}/api/cohorts`, requestBody)
+      .post(`${API_URL}/api/cohorts`, requestBody, { headers: { Authorization: `Bearer ${storedToken}`} })
       .then((response) => {
         const newCohort = response.data;
 
